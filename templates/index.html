@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Model SQL Query Generator</title>
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        form {
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #444;
+            border-radius: 8px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            background-color: #555;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        h1,
+        h2 {
+            margin-top: 40px;
+            color: #fff;
+        }
+
+        <style>... table {
+            margin: 0 auto;
+            width: 80%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            /* Added border */
+            border-radius: 10px;
+            /* Rounded corners */
+            overflow: hidden;
+            /* Ensures rounded corners are visible */
+        }
+
+        th,
+        td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            color: #fff;
+        }
+
+        th {
+            background-color: #555;
+        }
+
+        /* Updated styles for query and response cells */
+        .query {
+            background-color: #333;
+            /* Dark grey */
+            color: #ddd;
+            /* Light black text */
+            text-align: left;
+        }
+
+        .response {
+            background-color: #444;
+            /* Dark grey */
+            color: #ddd;
+            /* Light black text */
+        }
+
+        .history {
+            margin-top: 40px;
+            text-align: center;
+            /* Centered the History heading */
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+        }
+
+        .history table {
+            margin: 0 auto;
+            /* Center the table */
+            text-align: left;
+            border: 1px solid #ddd;
+            /* Added border */
+            border-radius: 10px;
+            /* Rounded corners */
+            overflow: hidden;
+        }
+
+        .history strong {
+            color: #fff;
+        }
+
+        /* Added hover effect to the entire table */
+        table:hover {
+            background-color: #666;
+        }
+    </style>
+
+    </style>
+
+</head>
+
+<body>
+    <h1>Language Model SQL Query Generator</h1>
+
+    <!-- Combined Form -->
+    <form action="/" method="post">
+        <!-- DDL Input -->
+        <label for="ddl">Enter DDL:</label><br>
+        <textarea id="ddl" name="ddl" rows="5" cols="50">{% if ddl %}{{ ddl }}{% endif %}</textarea><br><br>
+
+        <!-- Query Input -->
+        <label for="user_question">Enter Query:</label><br>
+        <input type="text" id="user_question" name="user_question"><br><br>
+
+        <!-- Submit Button -->
+        <input type="submit" value="Submit">
+    </form>
+
+    <!-- History -->
+    <div class="history">
+
+        <table>
+            <caption>
+                <h2>History</h2>
+            </caption>
+            <tbody>
+                {% for item in history %}
+                <tr>
+                    <td style="background-color: #333;"><strong>Query:</strong> {{ item.query }}</td>
+                </tr>
+                <tr>
+                    <td style="background-color: #666;"><strong>Response:</strong> {{ item.response }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
+

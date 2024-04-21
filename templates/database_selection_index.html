@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV File Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #fff;
+        }
+
+        h1 {
+            margin-top: 40px;
+            color: #fff;
+        }
+
+        form {
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 20px;
+            text-align: left;
+            background-color: #444;
+            border-radius: 8px;
+        }
+
+        input[type="file"],
+        textarea,
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            background-color: #555;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #007bff;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        /* Dark mode compatible styles */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #1a1a1a;
+                color: #fff;
+            }
+
+            form {
+                background-color: #333;
+            }
+
+            input[type="file"],
+            textarea,
+            input[type="submit"] {
+                background-color: #444;
+                color: #fff;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #007bff;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSV File Upload</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" multiple>
+        <textarea name="sql_query" placeholder="Enter SQL query"></textarea>
+        <input type="submit" value="Upload and Run Query">
+    </form>
+    <h2>Query Result:</h2>
+    <div id="cnt">
+        <ul>
+            {% for entry in history %}
+            <li><strong>Query:</strong> {{ entry.query }}</li>
+            <li><strong>Result:</strong></li>
+            <center>
+                <div>{{ entry.result | safe }}</div>
+            </center>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>
