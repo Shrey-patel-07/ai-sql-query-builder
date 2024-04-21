@@ -56,6 +56,7 @@ def run_sql_query(csv_files, sql_query):
 
 
 history = []
+history_dll = []
 
 @app.route('/', methods=['GET', 'POST'])
 def ddl_query():
@@ -67,9 +68,9 @@ def ddl_query():
         if user_question:
             output = get_llm_response(user_question, ddl)
             # Insert the new history item at the beginning of the list
-            history.insert(0, {'query': user_question, 'response': output})
+            history_dll.insert(0, {'query': user_question, 'response': output})
 
-    return render_template('index.html', history=history, ddl=ddl)
+    return render_template('index.html', history=history_dll, ddl=ddl)
 
 
 @app.route('/dbms_query', methods=['GET', 'POST'])
